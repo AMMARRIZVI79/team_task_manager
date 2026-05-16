@@ -1,0 +1,19 @@
+[build]
+builder = "nixpacks"
+
+[build.nixpacks]
+# Detect backend as Node.js service
+providers = ["node"]
+
+[[services]]
+name = "backend"
+root = "backend"
+startCommand = "npm start"
+buildCommand = "npm install"
+
+[[services]]
+name = "frontend"
+root = "frontend"
+startCommand = "npm run build && serve -s dist -l $PORT"
+buildCommand = "npm install"
+staticRoutes = []
